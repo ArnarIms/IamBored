@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body><div id="app-bored" :style="{'background-color': color}">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="card">
+                <div v-if="activity"> 
+                    Activity: {{activity.activity}} <br>
+                    accessibility: {{activity.accessibility}} <br>
+                    <span v-if="activity.link"> link: {{activity.link}} <br> </span>
+                    price: {{activity.price}} <br>
+                    type: {{activity.type}}
+                </div>
+                </div>
+                <div>
+                    <button @click="addTodo()">Save my todo list</button>
+                </div>
+                <label for="solodata">Get solo daga</label>
+                <input name="solodata" type="checkbox" @click="getSoloData = !getSoloData" v-model= "getSoloData">
+                <button @click="getData()"> Get data</button>
+            </div>
+        
+        
+            <div class="col">
+                <ul>
+                    <h2>List of my activities todo</h2>
+                    <li v-for="(todo,index) in myTodos"> Activity: {{todo.activity}} <br>
+                        Participants {{todo.participants}} <br> 
+                        Accessibility:{{todo.accessibility}} <br>
+                        Price:{{todo.price}} <br>
+                        Type: {{todo.type}} <br>
+                        Link: {{todo.link}} <br>
+                        Key: {{todo.key}} 
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script/vue.js"></script>
+</body>
+</html>
+<style>
+  .card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+}
+</style>
